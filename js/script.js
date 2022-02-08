@@ -10,7 +10,7 @@ function addNewBook(title, author) {
 }
 
 function removeBook(title) {
-  books = books.filter((book) => book.title === title);
+  books = books.filter((book) => book.title !== title);
   store.setItem('books', JSON.stringify(books));
 }
 

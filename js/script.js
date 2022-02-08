@@ -1,22 +1,31 @@
-let books = [];
 const addBtn = document.getElementById('addBtn');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const store = window.localStorage;
 
-function addNewBook(title, author) {
-  books.push({ title, author });
-  store.setItem('books', JSON.stringify(books));
-}
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 
-function removeBook(title) {
-  books = books.filter((book) => book.title === title);
-  store.setItem('books', JSON.stringify(books));
+  static books = [];
+
+  addNewBook() {
+    Book.books.push({ title: this.title, author: this.author });
+    store.setItem('books', JSON.stringify(Book.books));
+  }
+
+  removeBook() {
+    Book.books = Book.books.filter((book) => book.title === this.title);
+    store.setItem('books', JSON.stringify(Book.books));
+  }
 }
 
 function addBook(e) {
   e.preventDefault();
-  addNewBook(title.value, author.value);
+  const book = new Book(title.value, author.value);
+  book.addNewBook();
   const ul = document.querySelector('#book-list');
   const li = document.createElement('li');
 
@@ -30,7 +39,7 @@ function addBook(e) {
     const liElem = e.target.parentElement;
     let title = liElem.querySelector('h2');
     title = title.innerText;
-    removeBook(title);
+    removeBook();
     liElem.remove();
   });
 

@@ -1,38 +1,70 @@
-let books = [];
 const addBtn = document.getElementById('addBtn');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const store = window.localStorage;
 
-function addNewBook(title, author) {
-  books.push({ title, author });
-  store.setItem('books', JSON.stringify(books));
-}
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 
-function removeBook(title) {
-  books = books.filter((book) => book.title !== title);
-  store.setItem('books', JSON.stringify(books));
+  static books = [];
+
+  addNewBook() {
+    Book.books.push({ title: this.title, author: this.author });
+    store.setItem('books', JSON.stringify(Book.books));
+  }
+
+  static removeBook(title) {
+    Book.books = Book.books.filter((book) => book.title !== title);
+    store.setItem('books', JSON.stringify(Book.books));
+  }
 }
 
 function addBook(e) {
   e.preventDefault();
-  addNewBook(title.value, author.value);
+  const titleText = `"${title.value}"`;
+  const book = new Book(titleText, author.value);
+  book.addNewBook();
   const ul = document.querySelector('#book-list');
   const li = document.createElement('li');
+  li.classList.add('list-group-item', 'd-flex', 'list-group-item-active');
+  if (Book.books.length % 2 === 1) {
+    li.classList.add('list-group-item-secondary');
+  }
 
-  const titleElem = document.createElement('h2');
-  titleElem.innerText = title.value;
+  const titleElem = document.createElement('p');
+  titleElem.classList.add('title');
+  titleElem.innerText = titleText;
   const authorElem = document.createElement('p');
-  authorElem.innerText = author.value;
+  authorElem.classList.add('ms-2');
+  authorElem.innerText = ` by ${author.value}`;
   const button = document.createElement('button');
+  button.classList.add('ms-auto');
   button.innerText = 'Remove';
   button.addEventListener('click', (e) => {
     const liElem = e.target.parentElement;
-    let title = liElem.querySelector('h2');
+    let title = liElem.querySelector('.title');
     title = title.innerText;
-    removeBook(title);
+    Book.removeBook(title);
     liElem.remove();
+    if (!Book.books.length) {
+      document
+        .querySelector('.list')
+        .classList.remove('border', 'border-dark', 'border-2');
+    }
   });
+
+  if (Book.books.length) {
+    let count = 0;
+    do {
+      document
+        .querySelector('.list')
+        .classList.add('border', 'border-dark', 'border-2');
+      count += 1;
+    } while (count === 1);
+  }
 
   li.appendChild(titleElem);
   li.appendChild(authorElem);

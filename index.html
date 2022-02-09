@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <script src="./js/script.js" defer></script>
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <h1>Awesome books</h1>
-    <ul id="book-list">
-
-    </ul>
-    <form action="/" class="d-flex flex-column col-10">
-        <input type="text" placeholder="Title" id="title">
-        <input type="text" placeholder="Author" id="author">
-        <button type="submit" id="addBtn">Add</button>
+  <body class="container">
+    <h1 class="text-center">All Awesome books</h1>
+    <ul class="list list-group" id="book-list"></ul>
+    <div class="d-flex col-4 m-auto border-top border-dark my-3"></div>
+    <form
+      action="/"
+      class="form-group d-flex flex-column justify-content-center m-auto col-4 col-md-4"
+    >
+      <h2 class="text-center">Add a new book</h2>
+      <input
+        type="text"
+        placeholder="Title"
+        id="title"
+        class="m-auto form-control mb-2"
+      />
+      <input
+        type="text"
+        placeholder="Author"
+        id="author"
+        class="m-auto mb-2 form-control"
+      />
+      <button type="submit" id="addBtn" class="ms-auto">Add</button>
     </form>
-</body>
-
+  </body>
 </html>

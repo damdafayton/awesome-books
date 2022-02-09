@@ -17,14 +17,15 @@ class Book {
   }
 
   static removeBook(title) {
-    Book.books = Book.books.filter((book) => book.title === title);
+    Book.books = Book.books.filter((book) => book.title !== title);
     store.setItem('books', JSON.stringify(Book.books));
   }
 }
 
 function addBook(e) {
   e.preventDefault();
-  const book = new Book(title.value, author.value);
+  const titleText = `"${title.value}"`;
+  const book = new Book(titleText, author.value);
   book.addNewBook();
   const ul = document.querySelector('#book-list');
   const li = document.createElement('li');
@@ -35,7 +36,7 @@ function addBook(e) {
 
   const titleElem = document.createElement('p');
   titleElem.classList.add('title');
-  titleElem.innerText = `"${title.value}"`;
+  titleElem.innerText = titleText;
   const authorElem = document.createElement('p');
   authorElem.classList.add('ms-2');
   authorElem.innerText = ` by ${author.value}`;

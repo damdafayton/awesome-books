@@ -5,11 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/script.js" defer></script>
     <title>Document</title>
   </head>
 
   <body class="container">
+    <nav
+      class="d-flex navbar border border-1 border-dark py-0 mb-4 mt-2"
+      id="navbar"
+    >
+      <a href="#" class="my-0 text-dark">Awesome Books</a>
+      <ul class="d-flex ms-auto lists my-0">
+        <li><a href="#book-list" class="mx-1">List |</a></li>
+        <li><a href="#addNew" class="mx-1">Add New |</a></li>
+        <li><a href="#contact" class="mx-1">Contact</a></li>
+      </ul>
+    </nav>
     <h1 class="text-center">All Awesome books</h1>
     <ul class="list list-group" id="book-list"></ul>
     <div class="d-flex col-4 m-auto border-top border-dark my-3"></div>

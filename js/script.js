@@ -24,9 +24,15 @@ class Book {
 
 function addBook(e) {
   e.preventDefault();
+
+  // update class
   const titleText = `"${title.value}"`;
   const book = new Book(titleText, author.value);
   book.addNewBook();
+  title.value = '';
+  author.value = '';
+
+  // update ui
   const ul = document.querySelector('#book-list');
   const li = document.createElement('li');
   li.classList.add('list-group-item', 'd-flex', 'list-group-item-active');
@@ -74,3 +80,25 @@ function addBook(e) {
 }
 
 addBtn.addEventListener('click', addBook);
+
+const navAnchs = document.querySelectorAll('nav ul li a');
+
+navAnchs.forEach((a) => {
+  function navFunction(e) {
+    e.preventDefault();
+    const sections = document.querySelectorAll('section');
+    const linkTarget = e.target.href;
+    sections.forEach((section) => {
+      if (linkTarget.includes(section.id)) {
+        section.classList.remove('d-none');
+      } else {
+        section.classList.add('d-none');
+      }
+    });
+  }
+  a.addEventListener('click', navFunction);
+});
+
+const date = document.querySelector('.date');
+const d = new Date();
+date.innerHTML = `${d.toUTCString()}`;

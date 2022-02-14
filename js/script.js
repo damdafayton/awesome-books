@@ -9,17 +9,17 @@ class Book {
     this.author = author;
   }
 
-    static books = [];
+  static books = [];
 
-    addNewBook() {
-      Book.books.push({ title: this.title, author: this.author });
-      store.setItem('books', JSON.stringify(Book.books));
-    }
+  addNewBook() {
+    Book.books.push({ title: this.title, author: this.author });
+    store.setItem('books', JSON.stringify(Book.books));
+  }
 
-    static removeBook(title) {
-      Book.books = Book.books.filter((book) => book.title !== title);
-      store.setItem('books', JSON.stringify(Book.books));
-    }
+  static removeBook(title) {
+    Book.books = Book.books.filter((book) => book.title !== title);
+    store.setItem('books', JSON.stringify(Book.books));
+  }
 }
 
 function addBook(e) {
@@ -61,7 +61,7 @@ function addBook(e) {
         .classList.remove('border', 'border-dark', 'border-2');
     }
   });
-
+  
   if (Book.books.length) {
     let count = 0;
     do {
@@ -98,3 +98,7 @@ navAnchs.forEach((a) => {
   }
   a.addEventListener('click', navFunction);
 });
+
+const date = document.querySelector('.date');
+const d = new Date();
+date.innerHTML = `${d.toUTCString()}`;

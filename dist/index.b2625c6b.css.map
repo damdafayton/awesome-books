@@ -1,1 +1,0 @@
-{"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","sources":["css/style.css"],"sourcesContent":[".lists {\r\n  list-style-type: none;\r\n}\r\n\r\na {\r\n  color: black;\r\n  text-decoration: none;\r\n}\r\n"],"names":[],"version":3,"file":"index.b2625c6b.css.map","sourceRoot":"/__parcel_source_root/"}

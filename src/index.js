@@ -1,6 +1,9 @@
 import * as luxon from 'luxon';
-import Book from './modules/Book';
-import navFunction from './modules/navLinks';
+import Book from '../modules/Book';
+import navFunction from '../modules/navLinks';
+import '../css/bootstrap.min.css';
+import '../css/style.css';
+import "../css/style.scss";
 
 const addBtn = document.getElementById('addBtn');
 const title = document.getElementById('title');
@@ -13,8 +16,6 @@ function addBook(e) {
   const titleText = `"${title.value}"`;
   const book = new Book(titleText, author.value);
   book.addNewBook();
-  title.value = '';
-  author.value = '';
 
   // update ui
   const ul = document.querySelector('#book-list');
@@ -56,6 +57,10 @@ function addBook(e) {
   li.appendChild(authorElem);
   li.appendChild(button);
   ul.appendChild(li);
+
+  // reset form
+  title.value = '';
+  author.value = '';
 
   // update list border
   if (Book.books.length) {

@@ -61,7 +61,7 @@ function addBook(e) {
         .classList.remove('border', 'border-dark', 'border-2');
     }
   });
-  
+
   if (Book.books.length) {
     let count = 0;
     do {

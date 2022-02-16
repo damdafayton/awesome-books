@@ -2,7 +2,6 @@ import * as luxon from 'luxon';
 import Book from '../modules/Book';
 import navFunction from '../modules/navLinks';
 import '../css/bootstrap.min.css';
-import '../css/style.css';
 import "../css/style.scss";
 
 const addBtn = document.getElementById('addBtn');

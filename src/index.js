@@ -1,12 +1,18 @@
 import * as luxon from 'luxon';
 import Book from '../modules/Book';
 import navFunction from '../modules/navLinks';
-import '../css/bootstrap.min.css';
+// import '../css/bootstrap.min.css';
 import "../css/style.scss";
 
 const addBtn = document.getElementById('addBtn');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
+
+// Prevent bad ui during load
+window.addEventListener('load', () => {
+  const list = document.querySelector('body');
+  list.classList.remove('d-none');
+});
 
 function addBook(e) {
   e.preventDefault();
